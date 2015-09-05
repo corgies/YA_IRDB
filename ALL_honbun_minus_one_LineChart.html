@@ -1,0 +1,64 @@
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+    <script type="text/javascript">
+      
+      // ライブラリのロード
+      // name:visualization(可視化),version:バージョン(1),packages:パッケージ(corechart)
+      google.load('visualization', '1', {'packages':['corechart']});   
+      
+      // グラフを描画する為のコールバック関数を指定
+      google.setOnLoadCallback(drawChart);
+      
+      // グラフの描画   
+      function drawChart() {      
+      
+      // 配列からデータの生成
+      var data = google.visualization.arrayToDataTable([
+      ['年', '学術論文', '学位論文', '会議発表論文', '会議発表用資料', '図書', 'テクニカルレポート', '研究報告書', '一般雑誌記事', 'プレプリント', '教材', 'データ・データベース', 'ソフトウェア', 'その他'],
+      ['2008年', 22224, 7594, 4868, 833, 5301, 1878, 1641, 14280, 69, 1024, 12, 2, 45195],
+      ['2009年', 27633, 14605, 2668, 1046, 1252, 1828, 5671, 2984, 111, 519, 59, 0, 23688],
+      ['2010年', 40746, -10095, 3047, 889, 1841, 1945, 4689, 13504, 33, 234, 12980, 0, 30334],
+      ['2011年', 21861, 7291, 1919, 477, 766, 1161, 4009, 4541, 34, 568, 30634, 15, 15285],
+      ['2012年', 38142, 11408, 3610, 1130, 1767, 742, 4964, 3632, -10, 648, 8324, 8, 17806],
+      ['2013年', 28951, 1677, 2433, 546, 1956, 3109, 2020, 2644, 31, 420, 13, 0, 12215],
+      ['2014年', 20103, 14651, 2806, 430, 6147, 7781, 5474, 4334, 28, 488, -1, 4, 15293]
+      ]);
+      
+      // オプションの設定
+      
+      // 指定されたIDの要素に折れ線グラフを作成
+      var chart = new google.visualization.LineChart(document.getElementById('chart_div'));
+      
+      // グラフの描画
+      chart.draw(data,
+      {title: '全体でのコンテンツの新規登録数:1年ごとの推移(全体、本文あり、紀要論文を除く)',
+      colors: ['#6633cc', '#aaaa11', '#994499', '#316395', '#b82e2e', '#66aa00', '#dd4477', '#0099c6', '#990099', '#109618', '#ff9900', '#dc3912', '#3366cc'],
+      pointSize: 10, 
+      pointShape: 'square',
+      width: 750, 
+      height: 800, 
+      isStacked: true,
+      vAxis: { 
+      format: 'decimal',
+      viewWindowMode:'explicit',
+      minValue: -100,
+      maxValue: 48000,
+      gridlines: {
+      count: 7
+      }
+      }
+      }                 
+      );
+      }
+      
+    </script>
+  </head>
+  <body>
+    
+    <!--  グラフの描画エリア -->
+    <div id="chart_div" style="width: 100%; height: 1600px"></div>
+    
+  </body>
+</html>

@@ -1,0 +1,43 @@
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+    <script type="text/javascript">
+      google.load("visualization", "1", {packages:["corechart"]});
+      google.setOnLoadCallback(drawChart);
+      function drawChart() {
+
+      var data = google.visualization.arrayToDataTable([
+      ['Name', 'その他', 'ソフトウェア', 'データ・データベース', '教材', 'プレプリント', '一般雑誌記事', '研究報告書', 'テクニカルレポート', '図書', '会議発表用資料', '会議発表論文', '紀要論文', '学位論文', '学術雑誌論文', {role: 'annotation'}],
+      ['2007', 0, 0, 0, 0, 0, 0, 536, 0, 0, 0, 0, 131, 0, 0, ''] ,
+      ['2008', 0, 0, 0, 7, 37, 1, 552, 0, 23, 3, 47, 10998, 6478, 669, ''] ,
+      ['2009', 0, 0, 0, 7, 46, 7, 657, 0, 30, 6, 113, 11962, 6907, 1245, ''] ,
+      ['2010', 286, 0, 0, 7, 50, 33, 935, 27, 34, 16, 143, 12681, 1105, 1800, ''] ,
+      ['2011', 322, 0, 0, 10, 50, 31, 786, 406, 57, 46, 171, 12839, 1670, 2580, ''] ,
+      ['2012', 370, 0, 0, 11, 42, 53, 1050, 428, 68, 68, 182, 13415, 2051, 3394, ''] ,
+      ['2013', 379, 0, 0, 23, 49, 54, 1357, 443, 74, 88, 196, 13988, 2125, 3760, ''] ,
+      ['2014', 406, 0, 0, 29, 49, 55, 1556, 453, 81, 109, 215, 14296, 2221, 3962, ''] ,
+      ['2015', 581, 0, 0, 43, 50, 241, 1900, 454, 88, 122, 232, 15269, 2543, 4430, ''] 
+      ]);
+      var options = {
+      title: '筑波大学のコンテンツ登録数の推移(条件: 本文あり、各年7月)',
+      colors: ['#3366cc', '#dc3912', '#ff9900', '#109618', '#990099', '#0099c6', '#dd4477', '#66aa00', '#b82e2e', '#316395', '#994499', '#22aa99', '#aaaa11', '#6633cc'],
+      legend: { position: 'right', maxLines: 8 },
+      bar: { groupWidth: '50%' },
+      isStacked: true,
+      width: 750, 
+      height: 800, 
+      };
+      
+      var chart = new google.visualization.ColumnChart(document.getElementById('chart_div'));
+
+      chart.draw(data, options);
+
+      }
+    </script>
+  </head>
+  <body>
+    <div id="chart_div" style="width: 100%; height: 100%;">
+    </div>
+  </body>
+</html>

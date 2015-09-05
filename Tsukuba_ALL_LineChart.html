@@ -1,0 +1,64 @@
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+    <script type="text/javascript">
+      
+      // ライブラリのロード
+      // name:visualization(可視化),version:バージョン(1),packages:パッケージ(corechart)
+      google.load('visualization', '1', {'packages':['corechart']});   
+      
+      // グラフを描画する為のコールバック関数を指定
+      google.setOnLoadCallback(drawChart);
+      
+      // グラフの描画   
+      function drawChart() {      
+      
+      // 配列からデータの生成
+      var data = google.visualization.arrayToDataTable([
+      ['年', '学術論文', '学位論文','紀要論文', '会議発表論文', '会議発表用資料', '図書', 'テクニカルレポート', '研究報告書','一般雑誌記事','プレプリント','教材','データ・データベース','ソフトウェア','その他'],
+      ['2008年', 568, 822, 971, 25, 2, 26, 0, 77, 1, 5, 3, 0, 0, 0],
+      ['2009年', 389, 31, 826, 69, 5, 6, 0, 31, 5, 5, 0, 1, 0, 0],
+      ['2010年', 621, -5213, 581, 41, 34, 20, 41, 271, 26, 2, 0, -1, 0, 294],
+      ['2011年', 795, -44, 335, 20, 16, 13, 371, -138, 30, 2, 3, 0, 0, 60],
+      ['2012年', 787, 438, 411, 8, 22, 4, 24, 259, -9, -4, 1, 0, 0, 20],
+      ['2013年', 372, 47, 759, 24, 16, 8, 13, 307, 0, 2, 15, 0, 0, 11],
+      ['2014年', 192, 135, 171, 7, 15, 6, 4, 202, 16, 0, 5, 0, 0, 87]
+      ]);
+      
+      // オプションの設定
+      
+      // 指定されたIDの要素に折れ線グラフを作成
+      var chart = new google.visualization.LineChart(document.getElementById('chart_div'));
+      
+      // グラフの描画
+      chart.draw(data,
+      {title: '新規コンテンツ登録数: 1年ごとの推移(筑波大学、本文あり)',
+      colors: ['#6633cc', '#aaaa11', '#22aa99', '#994499', '#316395', '#b82e2e', '#66aa00', '#dd4477', '#0099c6', '#990099', '#109618', '#ff9900', '#dc3912', '#3366cc'],
+      pointSize: 10, 
+      pointShape: 'square',
+      width: 750, 
+      height: 800, 
+      isStacked: true,
+      vAxis: { 
+      format: 'decimal',
+      viewWindowMode:'explicit',
+      minValue: -5500,
+      maxValue: 1000,
+      gridlines: {
+      count: 10
+      }
+      }
+      }                 
+      );
+      }
+      
+    </script>
+  </head>
+  <body>
+    
+    <!--  グラフの描画エリア -->
+    <div id="chart_div" style="width: 100%; height: 1600px"></div>
+    
+  </body>
+</html>

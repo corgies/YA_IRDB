@@ -1,0 +1,64 @@
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+    <script type="text/javascript">
+      
+      // ライブラリのロード
+      // name:visualization(可視化),version:バージョン(1),packages:パッケージ(corechart)
+      google.load('visualization', '1', {'packages':['corechart']});   
+      
+      // グラフを描画する為のコールバック関数を指定
+      google.setOnLoadCallback(drawChart);
+      
+      // グラフの描画   
+      function drawChart() {      
+      
+      // 配列からデータの生成
+      var data = google.visualization.arrayToDataTable([
+      ['年', '学位論文(すべて)', '学位論文(本文あり)'],
+      ['2008年', 7362, 7594],
+      ['2009年', 11801, 14605],
+      ['2010年', 7572, -10095],
+      ['2011年', 16140, 7291],
+      ['2012年', 13699, 11408],
+      ['2013年', 14688, 1677],
+      ['2014年', 40090, 14651]
+      ]);
+      
+      // オプションの設定
+      
+      // 指定されたIDの要素に折れ線グラフを作成
+      var chart = new google.visualization.LineChart(document.getElementById('chart_div'));
+      
+      // グラフの描画
+      chart.draw(data,
+      {title: 'コンテンツ数の推移(学位論文)',
+      colors: ['green', 'orange'],
+      pointSize: 15, 
+      pointShape: 'star',
+      width: 750, 
+      height: 800, 
+      isStacked: true,
+      vAxis: { 
+      format: 'decimal',
+      viewWindowMode:'explicit',
+      minValue: -10000,
+      maxValue: 40000,
+      gridlines: {
+      count: 8
+      }
+      }
+      }                 
+      );
+      }
+      
+    </script>
+  </head>
+  <body>
+    
+    <!--  グラフの描画エリア -->
+    <div id="chart_div" style="width: 100%; height: 1600px"></div>
+    
+  </body>
+</html>
